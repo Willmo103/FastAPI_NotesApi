@@ -71,16 +71,24 @@
               <div class="card-header">
                 <h5 class="card-title">{{ note.title }}</h5>
               </div>
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#noteModal"
-                data-note-id="{{ note.id }}"
-                data-note-content="{{ note.content }}"
-              >
-                Edit Note
-              </button>
+              <div class="row">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#noteModal"
+                  data-note-id="{{ note.id }}"
+                  data-note-content="{{ note.content }}"
+                >
+                  Edit Note
+                </button>
+                <div class="left-block">
+                  <form method="" action="/notes/{{ note.id }}">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>

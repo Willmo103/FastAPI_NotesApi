@@ -48,3 +48,10 @@ async def save_note(id: int, req: Request, db: Session = Depends(get_db)):
     db.commit()
     # do something with the form data
     return templates.TemplateResponse("note.html", {"request": req})
+
+@app.get("/notes/{id}", response_class=HTMLResponse)
+async def delete_note(id: int, req: Request, db: Session = Depends(get_db)):
+    note_query = db.query(Note).filter(Note.id == id).first()
+    db.delete(note_query)
+    db.commit()
+    return templates.TemplateResponse("note.html", {"request": req})
