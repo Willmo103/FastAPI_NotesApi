@@ -30,7 +30,7 @@ class User(Base):
 
 
 class Note(Base):
-    __tablename__ = "photo"
+    __tablename__ = "note"
 
     id = Column(
         Integer,
