@@ -1,12 +1,11 @@
-from fastapi import FastAPI, status, HTTPException, Depends, APIRouter, Request
+from fastapi import FastAPI, Depends, Request
 from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, RedirectResponse
 from starlette.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from pathlib import Path
 from app.database import get_db
-from app.models import User, Note
+from app.models import Note
 
 BASE_PATH = Path(__file__).resolve().parent
 templates = Jinja2Templates(directory=str(BASE_PATH / "templates"))
@@ -46,7 +45,6 @@ async def save_note(id: int, req: Request, db: Session = Depends(get_db)):
     note_query = db.query(Note).filter(Note.id == id)
     note_query.update({"content": content}, synchronize_session=False)
     db.commit()
-    # do something with the form data
     return templates.TemplateResponse("note.html", {"request": req})
 
 @app.get("/notes/{id}", response_class=HTMLResponse)
