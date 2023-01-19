@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     database_name: str
 
     class Config:
-        env_file = "/usr/src/app/.env"
+        env_file = "C:\\Users\Willm\Desktop\\NotesApi\\.env"
 
 
 settings = Settings()
