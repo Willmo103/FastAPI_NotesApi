@@ -52,7 +52,7 @@
         </button>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-primary btn"
           data-toggle="modal"
           data-target="#newNoteModal"
         >
@@ -73,10 +73,11 @@
             </div>
             <div class="card-body">
               <p class="card-text">{{ note.content }}</p>
-              <div class="row">
+              <hr />
+              <div class="row" style="margin-left: 2px">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-primary btn-sm"
                   data-toggle="modal"
                   data-target="#noteModal"
                   data-note-id="{{ note.id }}"
@@ -87,7 +88,9 @@
                 <div class="left-block">
                   <form method="" action="/notes/{{ note.id }}">
                     <input type="hidden" name="_method" value="DELETE" />
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger btn-sm">
+                      Delete
+                    </button>
                   </form>
                 </div>
               </div>
